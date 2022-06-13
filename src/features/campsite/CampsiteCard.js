@@ -1,8 +1,9 @@
 import { Card, CardImg, CardImgOverlay, CardTitle } from 'reactstrap';
 
-//const CampsiteCard = ({ campsite }) => {
-//	const { image, name } = campsite;
-const CampsiteCard = ({ image, name }) => { // pretty sure this will work
+const CampsiteCard = ({ campsite }) => {
+	const { image, name } = campsite;
+//const CampsiteCard = ({ image, name }) => { // pretty sure this will work
+	// turns out it didn't work, not sure exactly why
 	return (
 		<Card>
 			<CardImg
@@ -11,7 +12,7 @@ const CampsiteCard = ({ image, name }) => { // pretty sure this will work
 				alt={name}
 			/>
 			<CardImgOverlay>
-				<CardTitle>{props.campsite.name}</CardTitle>
+				<CardTitle>{name}</CardTitle>
 			</CardImgOverlay>
 		</Card>
 	);
