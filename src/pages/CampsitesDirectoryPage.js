@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Container, Row, Col, Button } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import CampsiteDetail from '../features/campsite/CampsiteDetail';
 import CampsitesList from '../features/campsite/CampsitesList';
 import { selectCampsiteById } from '../features/campsite/campsitesSlice';
@@ -12,16 +12,14 @@ const CampsiteDirectoryPage = ( props ) => {
 		console.log(selectedCampsite);
 	}
 	*/
-	const [ selectedCampsite, toggleCampsite ] = useState(selectRandomCampsite());
+	const [ campsiteId, setCampsiteId ] = useState(0);
+	const selectedCampsite = selectCampsiteById(campsiteId);
 
 	return (
 		<Container>
-			<Button onClick={() => toggleCampsite(selectRandomCampsite())}>
-				Select Random Campsite
-			</Button>
 			<Row>
 				<Col sm='5' md='7'>
-					<CampsitesList />
+					<CampsitesList setCampsiteId={setCampsiteId} />
 				</Col>
 				<Col sm='7' md='5'>
 					<CampsiteDetail campsite={selectedCampsite} />
