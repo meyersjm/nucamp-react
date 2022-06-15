@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { selectCampsiteById } from '../features/campsite/campsitesSlice';
 import CampsiteDetail from '../features/campsite/CampsiteDetail';
 import CommentsList from '../features/comments/CommentsList';
+import SubHeader from '../components/SubHeader';
 
 const CampsiteDetailPage = _ => {
 	// when useParams() is called in a component body, if that component
@@ -14,6 +15,7 @@ const CampsiteDetailPage = _ => {
 
 	return (
 		<Container>
+			<SubHeader current={campsite.name} detail={true} />
 			<Row>
 				<CampsiteDetail campsite={campsite} />
 				<CommentsList campsiteId={campsiteId} />
