@@ -2,6 +2,7 @@ import { Container, Row } from 'reactstrap';
 import { useParams } from 'react-router-dom';
 import { selectCampsiteById } from '../features/campsite/campsitesSlice';
 import CampsiteDetail from '../features/campsite/CampsiteDetail';
+import CommentsList from '../features/comments/CommentsList';
 
 const CampsiteDetailPage = _ => {
 	// when useParams() is called in a component body, if that component
@@ -15,6 +16,7 @@ const CampsiteDetailPage = _ => {
 		<Container>
 			<Row>
 				<CampsiteDetail campsite={campsite} />
+				<CommentsList campsiteId={campsiteId} />
 			</Row>
 		</Container>
 	);
