@@ -9,4 +9,8 @@ export const selectRandomCampsite = _ => {
 
 export const selectCampsiteById = id => {
 	return CAMPSITES.find((campsite) => campsite.id === id);
-}
+};
+
+export const selectFeaturedCampsite = _ => {
+	return CAMPSITES.find((campsite) => campsite.featured);
+};
