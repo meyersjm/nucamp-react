@@ -4,7 +4,9 @@ import { Button,
 	FormGroup } from 'reactstrap';
 import { Formik,
 	Field,
+	ErrorMessage,
 	Form } from 'formik';
+import { validateContactForm } from '../utils/validateContactForm';
 
 const ContactForm = _ => {
 	const handleSubmit = (values, { resetForm}) => {
@@ -25,6 +27,7 @@ const ContactForm = _ => {
 				feedback: ''
 			}}
 			onSubmit={handleSubmit}
+			validate={validateContactForm}
 		>
 			<Form>
 				<FormGroup row>
@@ -33,6 +36,9 @@ const ContactForm = _ => {
 					</Label>
 					<Col md='10'>
 						<Field className='form-control' name='firstName' placeholder='First Name' />
+						<ErrorMessage name='firstName'>
+							{(msg) => <p className='text-danger'>{msg}</p>}
+						</ErrorMessage>
 					</Col>
 				</FormGroup>
 				<FormGroup row>
@@ -41,6 +47,9 @@ const ContactForm = _ => {
 					</Label>
 					<Col md='10'>
 						<Field className='form-control' name='lastName' placeholder='Last Name' />
+						<ErrorMessage name='lastName'>
+							{(msg) => <p className='text-danger'>{msg}</p>}
+						</ErrorMessage>
 					</Col>
 				</FormGroup>
 				<FormGroup row>
@@ -49,6 +58,9 @@ const ContactForm = _ => {
 					</Label>
 					<Col md='10'>
 						<Field className='form-control' name='phoneNum' placeholder="+1 (xxx) xxx-xxxx" />
+						<ErrorMessage name='phoneNum'>
+							{(msg) => <p className='text-danger'>{msg}</p>}
+						</ErrorMessage>
 					</Col>
 				</FormGroup>
 				<FormGroup row>
@@ -57,6 +69,9 @@ const ContactForm = _ => {
 					</Label>
 					<Col md='10'>
 						<Field className='form-control' name="email" placeholder="user@host.tld" />
+						<ErrorMessage name='email'>
+							{(msg) => <p className='text-danger'>{msg}</p>}
+						</ErrorMessage>
 					</Col>
 				</FormGroup>
 				<FormGroup row>
