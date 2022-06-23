@@ -7,7 +7,12 @@ import { Formik,
 	Form } from 'formik';
 
 const ContactForm = _ => {
-	
+	const handleSubmit = (values, { resetForm}) => {
+		console.log('Form values:', values);
+		console.log('Form values in JSON:', JSON.stringify(values));
+		resetForm();
+	};
+
 	return (
 		<Formik
 			initialValues={{
@@ -19,6 +24,7 @@ const ContactForm = _ => {
 				contactType: 'By Phone',
 				feedback: ''
 			}}
+			onSubmit={handleSubmit}
 		>
 			<Form>
 				<FormGroup row>
@@ -73,6 +79,11 @@ const ContactForm = _ => {
 					</Col>
 				</FormGroup>
 				<FormGroup row>
+					<Col md={{ size: 10, offset: 2 }}>
+						<Button type='submit' color='primary'>
+							Send Feedback
+						</Button>
+					</Col>
 				</FormGroup>
 			</Form>
 		</Formik>
