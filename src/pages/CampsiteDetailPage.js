@@ -4,6 +4,7 @@ import { selectCampsiteById } from '../features/campsite/campsitesSlice';
 import CampsiteDetail from '../features/campsite/CampsiteDetail';
 import CommentsList from '../features/comments/CommentsList';
 import SubHeader from '../components/SubHeader';
+import { useSelector } from 'react-redux';
 
 const CampsiteDetailPage = _ => {
 	// when useParams() is called in a component body, if that component
@@ -11,7 +12,8 @@ const CampsiteDetailPage = _ => {
 	// URL parameter will be available as the first property of an object
 	// returned by useParams(). { 0: URL_component, ... }
 	const { campsiteId } = useParams();
-	const campsite = selectCampsiteById(campsiteId);
+	const campsite = useSelector(selectCampsiteById(campsiteId));
+	console.log('campsite:', campsite);
 
 	return (
 		<Container>
