@@ -72,7 +72,7 @@ const UserLoginForm = _ => {
 								<Label htmlFor='password'>
 									Password
 								</Label>
-								<Field id='password' name='password' placeholder='Password' className='form-control' />
+								<Field type='password' id='password' name='password' placeholder='Password' className='form-control' />
 								<ErrorMessage name='password' />
 							</FormGroup>
 							<Button type='submit' color='primary'>
