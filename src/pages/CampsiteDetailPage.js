@@ -5,6 +5,8 @@ import CampsiteDetail from '../features/campsite/CampsiteDetail';
 import CommentsList from '../features/comments/CommentsList';
 import SubHeader from '../components/SubHeader';
 import { useSelector } from 'react-redux';
+import Error from '../components/Error';
+import Loading from '../components/Loading';
 
 const CampsiteDetailPage = _ => {
 	// when useParams() is called in a component body, if that component
@@ -14,13 +16,24 @@ const CampsiteDetailPage = _ => {
 	const { campsiteId } = useParams();
 	const campsite = useSelector(selectCampsiteById(campsiteId));
 	console.log('campsite:', campsite);
+	const isLoading = useSelector((state) => state.campsites.isLoading);
+	const errMsg = useSelector((state) => state.campsites.errMsg);
+	let content;
+
+	content = isLoading ? <Loading />
+		: errMsg ? <Error errMsg={errMsg} />
+		: (
+			<>
+				<CampsiteDetail campsite={campsite} />
+				<CommentsList campsiteId={campsiteId} />
+			</>
+		);
 
 	return (
 		<Container>
-			<SubHeader current={campsite.name} detail={true} />
+			{ campsite && <SubHeader current={campsite.name} detail={true} /> }
 			<Row>
-				<CampsiteDetail campsite={campsite} />
-				<CommentsList campsiteId={campsiteId} />
+				{content}
 			</Row>
 		</Container>
 	);
