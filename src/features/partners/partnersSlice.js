@@ -24,7 +24,7 @@ const partnersSlice = createSlice({
 	initialState,
 	reducers: {},
 	extraReducers: {
-		[fetchPartners.pending]: state => state.isLoading = true,
+		[fetchPartners.pending]:  state => { state.isLoading = true },
 		[fetchPartners.fulfilled]: (state, action) => {
 			state.isLoading = false;
 			state.errMsg ='';
@@ -41,4 +41,10 @@ export const partnersReducer = partnersSlice.reducer;
 
 export const selectAllPartners = state => { return state.partners.partnersArray; }
 
-export const selectFeaturedPartner = state => state.partners.partnersArray.find(({ featured }) => featured);
+export const selectFeaturedPartner = state => {
+	return {
+		featuredItem: state.partners.partnersArray.find(partner => partner.featured),
+		isLoading: state.partners.isLoading,
+		errMsg: state.partners.errMsg
+	}
+};
