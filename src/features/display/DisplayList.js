@@ -20,14 +20,12 @@ const DisplayList = _ => {
 		<Row> {
 			items.map((item, idx) => {
 				const { featuredItem, isLoading, errMsg } = item;
-				console.log('featuredItem:', featuredItem);
-				if(isLoading) return <Loading key={idx} />;
-				if(errMsg) return <Error errMsg={errMsg} key={idx} />;
-				return featuredItem && (
+				return isLoading ? <Loading key={idx} />
+					: errMsg ? <Error errMsg={errMsg} key={idx} />
+					: featuredItem ? (
 					<Col md className='m-1' key={idx}>
 						<AnimatedDisplayCard item={featuredItem} />
-					</Col>
-				);
+					</Col>) : null;
 			})
 		};
 		</Row>
